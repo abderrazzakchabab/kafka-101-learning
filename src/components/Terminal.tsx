@@ -8,7 +8,7 @@ export default function Terminal() {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <div className={`flex flex-col border border-gray-700 rounded-lg overflow-hidden bg-black transition-all ${expanded ? 'h-[500px]' : 'h-64'}`}>
+    <div className={`flex flex-col border border-slate-700 rounded-xl overflow-hidden bg-black shadow-lg transition-all ${expanded ? 'h-[700px]' : 'h-full min-h-[480px]'}`}>
       <div className="flex items-center justify-between px-3 py-2 bg-gray-900 border-b border-gray-700">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500" />

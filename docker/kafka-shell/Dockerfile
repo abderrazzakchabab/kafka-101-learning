@@ -2,12 +2,11 @@ FROM apache/kafka:3.7.0
 
 USER root
 
-# Install ttyd for browser-based terminal
-RUN microdnf install -y wget tar && \
-    wget -q -O /usr/local/bin/ttyd \
-      https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64 && \
-    chmod +x /usr/local/bin/ttyd && \
-    microdnf clean all
+# Install ttyd + bash (image is Alpine-based).
+# Use HTTP repos because the image's CA bundle is stale.
+RUN printf 'http://dl-cdn.alpinelinux.org/alpine/v3.19/main\nhttp://dl-cdn.alpinelinux.org/alpine/v3.19/community\n' > /etc/apk/repositories && \
+    apk add --no-cache bash ttyd ca-certificates && \
+    update-ca-certificates 2>/dev/null || true
 
 # Helpful shell aliases and bootstrap server config
 RUN echo 'export PATH=/opt/kafka/bin:$PATH' >> /root/.bashrc && \

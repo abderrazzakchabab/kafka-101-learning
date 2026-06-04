@@ -9,16 +9,16 @@ interface Props {
 
 export default function LessonContent({ content }: Props) {
   return (
-    <div className="prose prose-invert prose-orange max-w-none
-      prose-headings:font-bold prose-headings:text-white
-      prose-p:text-gray-300 prose-p:leading-relaxed
-      prose-code:bg-gray-800 prose-code:text-orange-300 prose-code:px-1 prose-code:rounded
-      prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-700
-      prose-strong:text-white
-      prose-a:text-orange-400 prose-a:no-underline hover:prose-a:underline
-      prose-blockquote:border-orange-500 prose-blockquote:text-gray-400
-      prose-table:text-gray-300 prose-th:text-white prose-th:bg-gray-800
-      prose-li:text-gray-300
+    <div className="prose max-w-none
+      prose-headings:font-bold prose-headings:text-slate-900
+      prose-p:text-slate-800 prose-p:leading-relaxed
+      prose-code:bg-slate-100 prose-code:text-blue-700 prose-code:px-1 prose-code:rounded prose-code:font-medium
+      prose-pre:bg-slate-900 prose-pre:text-slate-100 prose-pre:border prose-pre:border-slate-200
+      prose-strong:text-slate-900
+      prose-a:text-blue-700 prose-a:no-underline hover:prose-a:underline
+      prose-blockquote:border-blue-500 prose-blockquote:text-slate-700
+      prose-table:text-slate-800 prose-th:text-slate-900 prose-th:bg-slate-100
+      prose-li:text-slate-800 prose-li:marker:text-slate-500
     ">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>
         {content}

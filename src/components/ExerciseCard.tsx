@@ -13,49 +13,49 @@ export default function ExerciseCard({ exercise, index }: Props) {
   const [done, setDone] = useState(false)
 
   return (
-    <div className={`border rounded-lg p-4 transition-all ${done ? 'border-green-600 bg-green-950/30' : 'border-gray-700 bg-gray-900'}`}>
-      <div className="flex items-start justify-between gap-2 mb-2">
+    <div className={`rounded-xl border bg-white p-5 shadow-sm transition-all ${done ? 'border-emerald-300 bg-emerald-50/40' : 'border-slate-200'}`}>
+      <div className="mb-3 flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-mono text-orange-400 bg-orange-950 px-2 py-0.5 rounded">
+          <span className="rounded-md bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
             Exercise {index + 1}
           </span>
-          <h3 className="text-sm font-semibold text-white">{exercise.title}</h3>
+          <h3 className="text-base font-semibold text-slate-900">{exercise.title}</h3>
         </div>
         <button
           onClick={() => setDone(d => !d)}
-          className={`text-xs px-2 py-1 rounded border transition-colors shrink-0 ${
+          className={`shrink-0 rounded-lg border px-3 py-1 text-xs font-medium transition-colors ${
             done
-              ? 'border-green-600 text-green-400 bg-green-950'
-              : 'border-gray-600 text-gray-400 hover:border-gray-400'
+              ? 'border-emerald-300 bg-emerald-100 text-emerald-800'
+              : 'border-slate-300 text-slate-600 hover:bg-slate-50'
           }`}
         >
           {done ? '✓ Done' : 'Mark done'}
         </button>
       </div>
 
-      <p className="text-sm text-gray-300 mb-3">{exercise.description}</p>
+      <p className="mb-3 text-sm text-slate-700">{exercise.description}</p>
 
-      <div className="bg-black rounded p-3 font-mono text-sm mb-3 border border-gray-800">
-        <span className="text-green-400 select-none">$ </span>
-        <span className="text-gray-100">{exercise.command}</span>
+      <div className="mb-3 overflow-x-auto rounded-lg border border-slate-800 bg-slate-900 p-3 font-mono text-sm">
+        <span className="select-none text-emerald-400">$ </span>
+        <span className="text-slate-100">{exercise.command}</span>
       </div>
 
       {exercise.expectedOutput && (
-        <div className="text-xs text-gray-500 mb-2">
-          <span className="text-gray-600">Expected: </span>
-          <code className="text-gray-400">{exercise.expectedOutput}</code>
+        <div className="mb-2 text-xs text-slate-500">
+          <span className="text-slate-400">Expected: </span>
+          <code className="text-slate-700">{exercise.expectedOutput}</code>
         </div>
       )}
 
       <button
         onClick={() => setShowHint(h => !h)}
-        className="text-xs text-orange-400 hover:text-orange-300 transition-colors"
+        className="text-xs font-medium text-blue-600 hover:text-blue-700"
       >
         {showHint ? '▾ Hide hint' : '▸ Show hint'}
       </button>
 
       {showHint && (
-        <p className="mt-2 text-xs text-gray-400 bg-gray-800 rounded p-2 border-l-2 border-orange-500">
+        <p className="mt-2 rounded-lg border-l-4 border-amber-400 bg-amber-50 p-3 text-sm text-amber-900">
           {exercise.hint}
         </p>
       )}

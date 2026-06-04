@@ -19,11 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${geistMono.variable} bg-gray-950 text-gray-100 antialiased`}>
+    <html lang="en">
+      <body className={`${geistMono.variable} bg-slate-50 text-slate-900 antialiased`}>
         <div className="flex min-h-screen">
           <Sidebar />
-          <main className="flex-1 overflow-auto">
+          <main className="flex-1 overflow-auto bg-slate-50">
             {children}
           </main>
         </div>
