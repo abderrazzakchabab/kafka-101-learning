@@ -618,6 +618,30 @@ export const LESSON_CONTENT: Record<string, LessonContentData> = {
   },
 }
 
+import { LESSON_ENHANCEMENTS } from './lesson-enhancements'
+
 export function getLessonData(slug: string): LessonContentData | null {
-  return LESSON_CONTENT[slug] ?? null
+  const base = LESSON_CONTENT[slug]
+  if (!base) return null
+  const ext = LESSON_ENHANCEMENTS[slug]
+  if (!ext) return base
+  const enhancedSection: LessonSection = {
+    heading: 'Deep dive — research insight',
+    blocks: [
+      { type: 'text', body: ext.deepDive },
+      { type: 'callout', variant: 'info', body: `**Analogy.** ${ext.analogy}` },
+      { type: 'callout', variant: 'warning', body: `**Common pitfall.** ${ext.pitfall}` },
+    ],
+  }
+  const enhancedQuiz: QuizQuestion = {
+    q: ext.quizQuestion,
+    choices: ext.quizChoices,
+    answer: ext.quizAnswer,
+    explanation: ext.quizExplanation,
+  }
+  return {
+    ...base,
+    sections: [...base.sections, enhancedSection],
+    quiz: [...base.quiz, enhancedQuiz],
+  }
 }
